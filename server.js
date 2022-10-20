@@ -10,7 +10,6 @@ const listEndpoints = require('express-list-endpoints')
 //Definir archivo .env
 dotenv.config({
     path: './config/config.env'
-
 })
 
 //Crear el objeto aplicación con express
