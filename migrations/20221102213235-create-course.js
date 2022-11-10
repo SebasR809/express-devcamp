@@ -22,7 +22,7 @@ module.exports = {
         allowNull: false
       },
       enroll_cost: {
-        type: Sequelize.DECIMAL,
+        type: Sequelize.FLOAT,
         allowNull: false
       },
       minimum_skill: {

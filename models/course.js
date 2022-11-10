@@ -14,13 +14,91 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   course.init({
-    title: DataTypes.STRING,
-    description: DataTypes.STRING,
-    weeks: DataTypes.INTEGER,
-    enroll_cost: DataTypes.DECIMAL,
-    minimum_skill: DataTypes.STRING
-  }, {
+    title: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty :{
+        args: true,
+        msg: "El title no debe estar vacio"
+      },
+      notNull: { 
+        args: true,
+        msg: "El title es obligatorio"
+      }
+    },
+  },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty :{
+          args: true,
+          msg: "La description no debe estar vacio"
+        },
+        notNull: { 
+          args: true,
+          msg: "La description es obligatorio"
+        }
+      }
+    },
+    weeks: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isInt:{
+          args: true,
+          msg: "Las weeks deben ser numeros enteros"
+        },
+        max: {
+          args: true,
+          msg: "Las weeks solo pueden tener un digito"
+        },
+        notEmpty :{
+          args: true,
+          msg: "Las weeks no debe estar vacio"
+        },
+        notNull: { 
+          args: true,
+          msg: "Las weeks es obligatorio"
+        }
+      }
+    },
+    enroll_cost: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      validate: {
+        isFloat: {
+          args: true,
+          msg: "El enroll_cost debe ser un numero tipo float"
+        },
+        notEmpty :{
+          args: true,
+          msg: "El enroll_cost no debe estar vacio"
+        },
+        notNull: { 
+          args: true,
+          msg: "El enroll_cost es obligatorio"
+        }
+      }
+    },
+    minimum_skill: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty :{
+          args: true,
+          msg: "El minimun_skill no debe estar vacio"
+        },
+        notNull: { 
+          args: true,
+          msg: "El minimun_skill es obligatorio"
+        }
+      }
+    }
+    }, {
     sequelize,
+    timestamps:false,
     modelName: 'course',
   });
   return course;
